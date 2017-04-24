@@ -2,4 +2,3 @@
 *.pyc
 test/
 ci/
-.gitlab-ci.yml
