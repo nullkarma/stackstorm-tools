@@ -18,7 +18,7 @@ class DownloadArchive(Action):
 
         response = requests.get(url, headers=headers or {}, params=params or {}, verify=verify_ssl)
         if response.status_code != 200:
-            return False, {'artifact': '', 'error': response.text}
+            return False, {'archive': '', 'error': response.text}
 
         try:
             with open(save_as, 'wb') as archive_fd:
@@ -30,4 +30,4 @@ class DownloadArchive(Action):
         except zipfile.BadZipfile:
             pass
 
-        return True, {'artifact': save_as}
+        return True, {'archive': save_as}

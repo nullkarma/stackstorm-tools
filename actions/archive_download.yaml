@@ -1,24 +1,24 @@
 ---
 
-name: download_archive
+name: archive.download
 description: "Download zipfile"
 
 runner_type: python-script
-entry_point: download_archive.py
+entry_point: archive_download.py
 
 parameters:
   url:
     type: string
     description: "Gitlab URL"
-  save_as:
-    type: string
-    default: "/tmp/archive.zip"
-    description: "Save Archive."
   params:
     type: object
     description: "Request parameters"
   headers:
     type: object
+  save_as:
+    type: string
+    default: "/tmp/archive.zip"
+    description: "Save Archive."
   verify_ssl:
     type: boolean
     default: False
