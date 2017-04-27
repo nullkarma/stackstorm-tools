@@ -2,7 +2,7 @@
 
 version: '2.0'
 
-tools.dl_and_unzip:
+tools.dl_and_extract:
   input:
     - url
     - headers
