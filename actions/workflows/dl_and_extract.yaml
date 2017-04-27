@@ -1,4 +1,3 @@
----
 
 version: '2.0'
 
@@ -10,18 +9,22 @@ tools.dl_and_extract:
     - save_path
     - extract_path
 
+  output:
+    archive: <% $.archive %>
+    files: <% $.files %>
+
   tasks:
     download_archive:
-    action: tools.archive.download
-    input:
-      url: <% $.url %>
-      headers: <% $.headers %>
-      params: <% $.params %>
-      save_as: "<% $.save_as %>"
-    publish:
-      archive: <% task(download_archive).result.result.archive %>
-    on-success:
-      - extract_archive
+      action: tools.archive.download
+      input:
+        url: <% $.url %>
+        headers: <% $.headers %>
+        params: <% $.params %>
+        save_as: "<% $.save_as %>"
+      publish:
+        archive: <% task(download_archive).result.result.archive %>
+      on-success:
+        - extract_archive
 
   extract_archive:
     action: tools.archive.extract
@@ -30,5 +33,5 @@ tools.dl_and_extract:
       directory: <% $.extract_path %>
       files: true
     publish:
-      files: <% task(extract_archive).result.result.files %>
       archive: <% task(extract_archive).result.result.archive %>
+      files: <% task(extract_archive).result.result.files %>
