@@ -20,7 +20,7 @@ tools.dl_and_extract:
         url: <% $.url %>
         headers: <% $.headers %>
         params: <% $.params %>
-        save_as: "<% $.save_as %>"
+        save_as: <% $.save_path %>
       publish:
         archive: <% task(download_archive).result.result.archive %>
       on-success:
