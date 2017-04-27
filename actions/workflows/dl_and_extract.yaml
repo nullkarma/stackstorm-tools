@@ -26,12 +26,12 @@ tools.dl_and_extract:
       on-success:
         - extract_archive
 
-  extract_archive:
-    action: tools.archive.extract
-    input:
-      archive: <% $.archive %>
-      directory: <% $.extract_path %>
-      files: true
-    publish:
-      archive: <% task(extract_archive).result.result.archive %>
-      files: <% task(extract_archive).result.result.files %>
+    extract_archive:
+      action: tools.archive.extract
+      input:
+        archive: <% $.archive %>
+        directory: <% $.extract_path %>
+        files: true
+      publish:
+        archive: <% task(extract_archive).result.result.archive %>
+        files: <% task(extract_archive).result.result.files %>
